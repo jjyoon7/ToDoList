@@ -1,21 +1,31 @@
 const toDoForm = document.querySelector(".js-toDoForm");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector(".js-toDoList")
+const doneDoList = document.querySelector(".js-doneDoList")
 
 const TODOS_LS = "toDos"
 let toDos = [];
+let doneDos = [];
 
-const checkBtnStyle = "checked"
+const checkBtnStyle = "checked";
 
 function checkToDos(event) {
-    console.log("checked");
     const checkedBtn = event.currentTarget;
     checkedBtn.classList.add(checkBtnStyle)
+    //if it is chekced as done, move this to doneDos array and delete from the toDo list
     console.log(checkedBtn)
+    console.log(toDoList.childNodes.length)
+    console.log(doneDoList.childNodes.length);
+
+    while (toDoList.childNodes.length) { 
+        doneDoList.appendChild(toDoList.firstChild); 
+    }
+
+    console.log(doneDoList);
+    
 }
 
 function deleteToDos(event) {
-    console.log("delete");
     const btn = event.currentTarget;
     const li = btn.parentNode;
     toDoList.removeChild(li);
@@ -24,7 +34,7 @@ function deleteToDos(event) {
     })
     toDos = cleanToDos;
     saveToDos();
-    console.log(btn);
+
 }
 
 function saveToDos() {
@@ -55,7 +65,8 @@ function paintToDo(text) {
     toDoList.appendChild(li);
     const toDoObj = {
         text: text,
-        id: newId
+        id: newId,
+        checked: false,
     }
     toDos.push(toDoObj);
     saveToDos();

@@ -12,3 +12,11 @@ body {
     width:100px;
     height: 20px;
 }
+
+.toDoList {
+    background-color: red;
+}
+
+.doneDoList {
+    background-color: green;
+}
