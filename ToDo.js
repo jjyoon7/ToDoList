@@ -4,6 +4,10 @@ const toDoList = document.querySelector(".js-toDoList");
 const toDos_LS = "toDos";
 const toDos = [];
 
+function saveToDos() {
+    localStorage.setItem(toDos_LS, toDoObj);
+}
+
 function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
@@ -20,8 +24,9 @@ function paintToDo(text) {
         id: toDos.length + 1,
         text: text
     }
-    toDos.push(toDoObj)
+    toDos.push(toDoObj);
     console.log(toDos);
+    saveToDos();
 }
 
 function handleSubmit(event) {
