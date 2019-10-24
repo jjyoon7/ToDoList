@@ -54,8 +54,9 @@ function deleteToDos(event) {
     div.removeChild(ul);
     
     const cleanToDos = toDos.filter(function(toDo) {
-        return toDo.id !== parseInt(li.id);
+        return toDo.id !== parseInt(ul.id);
     })
+    console.log(cleanToDos)
     toDos = cleanToDos;
     saveToDos();
 }
