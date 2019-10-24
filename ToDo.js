@@ -1,28 +1,52 @@
-const form = document.querySelector(".js-form");
-const input = form.querySelector("input");
-const toDoList = document.querySelector(".js-toDoList");
-const toDos_LS = "toDos";
-const toDos = [];
+const toDoForm = document.querySelector(".js-toDoForm");
+const toDoInput = toDoForm.querySelector("input");
+const toDoList = document.querySelector(".js-toDoList")
+
+const TODOS_LS = "toDos"
+let toDos = [];
+
+const checkBtnStyle = "checked"
+
+function checkToDos(event) {
+    console.log("checked!")
+    const btn = event.target;
+    btn.classList.add(checkBtnStyle)
+}
+
+function deleteToDos(event) {
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(function(toDo) {
+        return toDo.id !== parseInt(li.id);
+    })
+    toDos = cleanToDos;
+    saveToDos();
+}
 
 function saveToDos() {
-    localStorage.setItem(toDos_LS, JSON.stringify(toDos));
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
 function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
     const checkBtn = document.createElement("button");
-    delBtn.innerHTML = `<i class="fa fa-trash-o"></i>`;
+    delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
+    delBtn.addEventListener("click", deleteToDos)
     checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
+    checkBtn.addEventListener("click", checkToDos)
     const span = document.createElement("span");
+    const newId = toDos.length + 1;
     span.innerText = text;
     li.appendChild(span);
-    li.appendChild(checkBtn);
     li.appendChild(delBtn);
+    li.appendChild(checkBtn);
+    li.id = newId;
     toDoList.appendChild(li);
-    toDoObj = {
-        id: toDos.length + 1,
-        text: text
+    const toDoObj = {
+        text: text,
+        id: newId
     }
     toDos.push(toDoObj);
     saveToDos();
@@ -30,23 +54,25 @@ function paintToDo(text) {
 
 function handleSubmit(event) {
     event.preventDefault();
-    const currentValue = input.value;
+    const currentValue = toDoInput.value;
     paintToDo(currentValue);
-    //empty the input area after submit the toDo
-    input.value = "";
+    toDoInput.value = "";
 }
 
-function loadToDos(){
-    const toDosData = localStorage.getItem(toDos_LS);
-    if(toDosData !== null){
-        const parsedToDos = JSON.parse(toDosData);
-        parsedToDos.forEach(toDo => paintToDo(toDo.text))
+function loadTodos() {
+    const loadedToDos = localStorage.getItem(TODOS_LS);
+    if(loadedToDos !== null) {
+        // console.log(loadedToDos)
+        const parsedToDos = JSON.parse(loadedToDos);
+        parsedToDos.forEach(function(toDo) {
+            paintToDo(toDo.text);
+        });
     }
 }
 
 function init() {
-    loadToDos();
-    form.addEventListener("submit", handleSubmit);
+    loadTodos();
+    toDoForm.addEventListener("submit", handleSubmit)
 }
 
 init();
