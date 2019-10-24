@@ -9,26 +9,32 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 
+let toDoObj = {
+    checked: false,
+}
+
 function checkToDos(event) {
     const checkedBtn = event.currentTarget;
     checkedBtn.classList.add(checkBtnStyle)
-    //if it is chekced as done, move this to doneDos array and delete from the toDo list
-    console.log(checkedBtn)
-    console.log(toDoList.childNodes.length)
-    console.log(doneDoList.childNodes.length);
+
+    toDoObj.checked = true;
 
     while (toDoList.childNodes.length) { 
         doneDoList.appendChild(toDoList.firstChild); 
-    }
-
-    console.log(doneDoList);
-    
+    }    
 }
 
 function deleteToDos(event) {
+    console.log(toDoObj.checked)
     const btn = event.currentTarget;
     const li = btn.parentNode;
-    toDoList.removeChild(li);
+
+    if(toDoObj.checked) {
+        toDoList.removeChild(li);
+    } else if(!toDoObj.chekced) {
+        doneDoList.removeChild(li);
+    }
+    
     const cleanToDos = toDos.filter(function(toDo) {
         return toDo.id !== parseInt(li.id);
     })
@@ -63,10 +69,9 @@ function paintToDo(text) {
 
     li.id = newId;
     toDoList.appendChild(li);
-    const toDoObj = {
+    let toDoObj = {
         text: text,
         id: newId,
-        checked: false,
     }
     toDos.push(toDoObj);
     saveToDos();
