@@ -11,6 +11,8 @@ function handleSubmit(event) {
     event.preventDefault();
     const currentValue = input.value;
     paintToDo(currentValue);
+    //empty the input area after submit the toDo
+    input.value = "";
 }
 
 function loadToDos(){
