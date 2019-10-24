@@ -1,22 +1,78 @@
+/* general */
+
 body {
     margin: 0;
     font-family: 'Cabin', sans-serif;
     background-color: #a8ffef;
+    font-size: 1.5em;
+    color: #2b2b2b;
 }
 
-.checked {
-    background-color: green;
+input {
+    border: none;
+    border-bottom: 3px solid #a8ffef;
+    font-size: 1em;
 }
 
-.button {
-    width:100px;
-    height: 20px;
+button {
+    border: 2px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.6em;
+    margin: 4px 2px;
+    left: 2rem;
+    cursor: pointer;
+}
+.toDoList button {
+    background-color: #07a1e3;
+} 
+.doneDoList button {
+    background-color: #0ee3bc;
+} 
+
+ul {
+    list-style-type: square;
 }
 
-.toDoList {
+li button {
     background-color: red;
 }
 
-.doneDoList {
-    background-color: green;
+/* layout */
+
+.toDoBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 50px;
+    background-color: pink; */
 }
+
+.toDoCard {
+    background-color: white;
+    width: 30%;
+    min-width: 200px;
+    padding: 2rem;
+    margin-top: 2em;
+    border-radius: 5px;
+}
+
+.toDoList {
+    border-radius: 4px;
+    background-color: #59cdff;
+    padding: 10px 40px;
+}
+
+.doneDoList {
+    border-radius: 4px;
+    background-color: #29ffd8;
+    padding: 10px 40px;
+}
+
+.checked {
+    background-color: #29ffd8;
+}
+

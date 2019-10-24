@@ -24,8 +24,8 @@ function checkToDos(event) {
     console.log(li.checked)
 
     if(li.checked){
-        // instead of firstChild, it has to be the clicked one
         doneDoList.appendChild(li); 
+        //need to save this result
     }   
 }
 
