@@ -4,7 +4,11 @@ const toDoList = document.querySelector(".js-toDoList");
 const toDos_LS = "toDos";
 
 function paintToDo(text) {
-    console.log(text);
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+
+    li.appendChild(span);
+    toDoList.appendChild(li);
 }
 
 function handleSubmit(event) {
