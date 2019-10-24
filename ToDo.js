@@ -13,12 +13,13 @@ const checkBtnStyle = "checked";
 function checkToDos(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
+    const ul = li.parentNode;
     btn.classList.add(checkBtnStyle);
 
     li.checked = true;
 
     if(li.checked){
-        doneDoList.appendChild(li); 
+        doneDoList.appendChild(ul); 
     } 
     
     // const doneToDos = doneDos.filter(function(doneDo) {
@@ -36,8 +37,11 @@ function deleteToDos(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
+    const div = ul.parentNode;
+    // console.log(li)
+    // console.log(ul)
 
-    ul.removeChild(li);
+    div.removeChild(ul);
     
     const cleanToDos = toDos.filter(function(toDo) {
         return toDo.id !== parseInt(li.id);
@@ -60,16 +64,18 @@ function paintToDo(text) {
     const checkBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
-
+    const spanButton = document.createElement("span");
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
     checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
 
     span.innerText = text;
     span.contentEditable = true;
     
+    spanButton.appendChild(delBtn);
+    spanButton.appendChild(checkBtn);
+
     li.appendChild(span);
-    li.appendChild(delBtn);
-    li.appendChild(checkBtn);
+    li.appendChild(spanButton);
 
     li.id = newId;
     toDoList.appendChild(li);

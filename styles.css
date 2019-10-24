@@ -42,6 +42,11 @@ span {
 
 }
 
+li {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* layout */
 
 .toDoBody {
