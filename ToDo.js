@@ -3,6 +3,16 @@ const input = form.querySelector("input");
 const toDoList = document.querySelector(".js-toDoList");
 const toDos_LS = "toDos";
 
+function paintToDo(text) {
+
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const currentValue = input.value;
+    paintToDo(currentValue);
+}
+
 function loadToDos(){
     const toDos = localStorage.getItem(toDos_LS);
     if(toDos !== null){
@@ -12,6 +22,7 @@ function loadToDos(){
 
 function init() {
     loadToDos();
+    form.addEventListener("submit", handleSubmit);
 }
 
 init();
