@@ -6,7 +6,7 @@ const toDos_LS = "toDos";
 function paintToDo(text) {
     const li = document.createElement("li");
     const span = document.createElement("span");
-
+    span.innerText = text;
     li.appendChild(span);
     toDoList.appendChild(li);
 }
