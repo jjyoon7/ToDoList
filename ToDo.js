@@ -16,15 +16,17 @@ let toDoObj = {
 function checkToDos(event) {
     console.log("checkToDo is triggered");
     const btn = event.currentTarget;
+    const li = btn.parentNode;
     btn.classList.add(checkBtnStyle);
 
     toDoObj.checked = true;
 
+    console.log()
+
     if(toDoObj.checked){
-        doneDoList.appendChild(toDoList.firstChild); 
-        toDoObj.checked = false;
-    }
-   
+        // instead of firstChild, it has to be the clicked one
+        doneDoList.appendChild(li); 
+    }   
 }
 
 function deleteToDos(event) {
@@ -32,12 +34,14 @@ function deleteToDos(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
 
-    console.log(!toDoObj.checked);
+    console.log(toDoObj.checked);
 
     if(toDoObj.checked === true) {
         doneDoList.removeChild(li);
+        toDoList.removeChild(li);
         console.log("delete the toDo from doneList");
     } else if (toDoObj.checked === false) {
+        toDoList.removeChild(li);
         toDoList.removeChild(li);
         console.log("delete the toDo from toDoList");
     }
@@ -94,7 +98,6 @@ function handleSubmit(event) {
 function loadTodos() {
     const loadedToDos = localStorage.getItem(TODOS_LS);
     if(loadedToDos !== null) {
-        // console.log(loadedToDos)
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
