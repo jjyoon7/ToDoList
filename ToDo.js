@@ -9,9 +9,9 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 
-let toDoObj = {
-    checked: false,
-}
+// let toDoObj = {
+//     checked: false,
+// }
 
 function checkToDos(event) {
     console.log("checkToDo is triggered");
@@ -19,11 +19,11 @@ function checkToDos(event) {
     const li = btn.parentNode;
     btn.classList.add(checkBtnStyle);
 
-    toDoObj.checked = true;
+    li.checked = true;
 
-    console.log()
+    console.log(li.checked)
 
-    if(toDoObj.checked){
+    if(li.checked){
         // instead of firstChild, it has to be the clicked one
         doneDoList.appendChild(li); 
     }   
@@ -34,14 +34,12 @@ function deleteToDos(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
 
-    console.log(toDoObj.checked);
+    // li.checked = false;
 
-    if(toDoObj.checked === true) {
+    if(li.checked === true) {
         doneDoList.removeChild(li);
-        toDoList.removeChild(li);
         console.log("delete the toDo from doneList");
-    } else if (toDoObj.checked === false) {
-        toDoList.removeChild(li);
+    } else if (li.checked === false) {
         toDoList.removeChild(li);
         console.log("delete the toDo from toDoList");
     }
@@ -80,6 +78,7 @@ function paintToDo(text) {
     let toDoObj = {
         text: text,
         id: newId,
+        checked: false,
     }
     toDos.push(toDoObj);
     saveToDos();
