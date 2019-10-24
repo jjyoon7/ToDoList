@@ -14,26 +14,32 @@ let toDoObj = {
 }
 
 function checkToDos(event) {
-    const checkedBtn = event.currentTarget;
-    checkedBtn.classList.add(checkBtnStyle)
+    console.log("checkToDo is triggered");
+    const btn = event.currentTarget;
+    btn.classList.add(checkBtnStyle);
 
     toDoObj.checked = true;
 
     if(toDoObj.checked){
         doneDoList.appendChild(toDoList.firstChild); 
+        toDoObj.checked = false;
     }
    
 }
 
 function deleteToDos(event) {
-    console.log(toDoObj.checked)
+    console.log("deleteToDo is triggered");
     const btn = event.currentTarget;
     const li = btn.parentNode;
 
-    if(toDoObj.checked) {
+    console.log(!toDoObj.checked);
+
+    if(toDoObj.checked === true) {
         doneDoList.removeChild(li);
-    } else {
+        console.log("delete the toDo from doneList");
+    } else if (toDoObj.checked === false) {
         toDoList.removeChild(li);
+        console.log("delete the toDo from toDoList");
     }
     
     const cleanToDos = toDos.filter(function(toDo) {
@@ -58,9 +64,6 @@ function paintToDo(text) {
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
     checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
 
-    delBtn.addEventListener("click", deleteToDos)
-    checkBtn.addEventListener("click", checkToDos)
-
     span.innerText = text;
     span.contentEditable = true;
     
@@ -76,6 +79,9 @@ function paintToDo(text) {
     }
     toDos.push(toDoObj);
     saveToDos();
+
+    delBtn.addEventListener("click", deleteToDos)
+    checkBtn.addEventListener("click", checkToDos)
 }
 
 function handleSubmit(event) {
