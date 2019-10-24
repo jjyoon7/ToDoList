@@ -10,6 +10,16 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 
+function editToDos(event) {
+    // const btn = event.currentTarget;
+    // const li = btn.parentNode;
+    // const ul = li.parentNode;
+    // console.log("its edited");
+    // console.log(ul.innerText);
+
+    //li.text is changed as contentEditable
+}
+
 function checkToDos(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
@@ -62,17 +72,21 @@ function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
     const checkBtn = document.createElement("button");
+    const editBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     const spanButton = document.createElement("span");
+
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
     checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
+    editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
 
     span.innerText = text;
     span.contentEditable = true;
-    
-    spanButton.appendChild(delBtn);
+
     spanButton.appendChild(checkBtn);
+    spanButton.appendChild(editBtn);
+    spanButton.appendChild(delBtn);
 
     li.appendChild(span);
     li.appendChild(spanButton);
@@ -89,6 +103,7 @@ function paintToDo(text) {
 
     delBtn.addEventListener("click", deleteToDos)
     checkBtn.addEventListener("click", checkToDos)
+    editBtn.addEventListener("click", editToDos)
 }
 
 function handleSubmit(event) {
