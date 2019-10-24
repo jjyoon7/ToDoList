@@ -4,6 +4,7 @@ const toDoList = document.querySelector(".js-toDoList")
 const doneDoList = document.querySelector(".js-doneDoList")
 
 const TODOS_LS = "toDos"
+const DONEDOS_LS = "doneDos"
 let toDos = [];
 let doneDos = [];
 
@@ -18,7 +19,17 @@ function checkToDos(event) {
 
     if(li.checked){
         doneDoList.appendChild(li); 
-    }   
+    } 
+    
+    // const doneToDos = doneDos.filter(function(doneDo) {
+    //     return doneDo.checked = true;
+    // })
+    // let doneDoObj = {
+    //     id: newId,
+    //     checked: false,
+    // }
+    // doneDos.push(donDoObj);
+    // saveDoneDos();
 }
 
 function deleteToDos(event) {
@@ -37,6 +48,10 @@ function deleteToDos(event) {
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+
+function saveDoneDos() {
+    localStorage.setItem(DONEDOS_LS, JSON.stringify(doneDos));
 }
 
 function paintToDo(text) {
