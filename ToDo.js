@@ -45,10 +45,12 @@ function paintToDo(text) {
     checkBtn.addEventListener("click", checkToDos)
 
     span.innerText = text;
+    span.contentEditable = true;
     
     li.appendChild(span);
     li.appendChild(delBtn);
     li.appendChild(checkBtn);
+
     li.id = newId;
     toDoList.appendChild(li);
     const toDoObj = {
