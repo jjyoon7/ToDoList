@@ -9,47 +9,30 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 
-// let toDoObj = {
-//     checked: false,
-// }
-
 function checkToDos(event) {
-    console.log("checkToDo is triggered");
     const btn = event.currentTarget;
     const li = btn.parentNode;
     btn.classList.add(checkBtnStyle);
 
     li.checked = true;
 
-    console.log(li.checked)
-
     if(li.checked){
         doneDoList.appendChild(li); 
-        //need to save this result
     }   
 }
 
 function deleteToDos(event) {
-    console.log("deleteToDo is triggered");
     const btn = event.currentTarget;
     const li = btn.parentNode;
+    const ul = li.parentNode;
 
-    // li.checked = false;
-
-    if(li.checked === true) {
-        doneDoList.removeChild(li);
-        console.log("delete the toDo from doneList");
-    } else if (li.checked === false) {
-        toDoList.removeChild(li);
-        console.log("delete the toDo from toDoList");
-    }
+    ul.removeChild(li);
     
     const cleanToDos = toDos.filter(function(toDo) {
         return toDo.id !== parseInt(li.id);
     })
     toDos = cleanToDos;
     saveToDos();
-
 }
 
 function saveToDos() {

@@ -11,7 +11,7 @@ body {
 input {
     border: none;
     border-bottom: 3px solid #a8ffef;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 button {
@@ -59,7 +59,11 @@ li button {
     margin-top: 2em;
     border-radius: 5px;
 }
-
+.toDoCard-shade {
+    -webkit-box-shadow: 8px 12px 22px 0px rgba(0,0,0,0.19);
+    -moz-box-shadow: 8px 12px 22px 0px rgba(0,0,0,0.19);
+    box-shadow: 8px 12px 22px 0px rgba(0,0,0,0.19);
+}
 .toDoList {
     border-radius: 4px;
     background-color: #59cdff;
