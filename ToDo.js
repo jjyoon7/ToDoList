@@ -5,9 +5,15 @@ const toDos_LS = "toDos";
 
 function paintToDo(text) {
     const li = document.createElement("li");
+    const delBtn = document.createElement("button");
+    const checkBtn = document.createElement("button");
+    delBtn.innerHTML = `<i class="fa fa-trash-o"></i>`;
+    checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
     const span = document.createElement("span");
     span.innerText = text;
     li.appendChild(span);
+    li.appendChild(checkBtn);
+    li.appendChild(delBtn);
     toDoList.appendChild(li);
 }
 
