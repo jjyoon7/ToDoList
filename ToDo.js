@@ -19,9 +19,10 @@ function checkToDos(event) {
 
     toDoObj.checked = true;
 
-    while (toDoList.childNodes.length) { 
+    if(toDoObj.checked){
         doneDoList.appendChild(toDoList.firstChild); 
-    }    
+    }
+   
 }
 
 function deleteToDos(event) {
@@ -30,9 +31,9 @@ function deleteToDos(event) {
     const li = btn.parentNode;
 
     if(toDoObj.checked) {
-        toDoList.removeChild(li);
-    } else if(!toDoObj.chekced) {
         doneDoList.removeChild(li);
+    } else {
+        toDoList.removeChild(li);
     }
     
     const cleanToDos = toDos.filter(function(toDo) {
