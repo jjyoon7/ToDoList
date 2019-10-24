@@ -8,12 +8,14 @@ let toDos = [];
 const checkBtnStyle = "checked"
 
 function checkToDos(event) {
-    console.log("checked!")
-    const btn = event.target;
-    btn.classList.add(checkBtnStyle)
+    console.log("checked");
+    const checkedBtn = event.target;
+    checkedBtn.classList.add(checkBtnStyle)
+    console.log(checkedBtn)
 }
 
 function deleteToDos(event) {
+    console.log("delete");
     const btn = event.target;
     const li = btn.parentNode;
     toDoList.removeChild(li);
@@ -22,6 +24,7 @@ function deleteToDos(event) {
     })
     toDos = cleanToDos;
     saveToDos();
+    console.log(btn);
 }
 
 function saveToDos() {
