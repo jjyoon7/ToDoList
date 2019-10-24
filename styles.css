@@ -13,33 +13,9 @@ input {
     border-bottom: 3px solid #a8ffef;
     font-size: 0.8em;
 }
-
-button {
-    border: 2px solid #fff;
-    border-radius: 3px;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.6em;
-    margin: 4px 2px;
-    left: 2rem;
-    cursor: pointer;
-}
-.toDoList button {
-    background-color: #07a1e3;
-} 
-.doneDoList button {
-    background-color: #0ee3bc;
-} 
-
+ 
 ul {
     list-style-type: square;
-}
-
-span {
-    margin-right: 5px;
-
 }
 
 li {
@@ -73,16 +49,36 @@ li {
 .toDoList {
     border-radius: 4px;
     background-color: #59cdff;
-    padding: 10px 40px;
+    padding: 10px 15px;
 }
 
 .doneDoList {
     border-radius: 4px;
     background-color: #29ffd8;
-    padding: 10px 40px;
+    padding: 10px 15px;
 }
 
 .checked {
     background-color: #29ffd8;
 }
 
+/* buttons */
+
+button {
+    border: 2px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.6em;
+    margin: 4px 2px;
+    left: 2rem;
+    cursor: pointer;
+}
+.toDoList button {
+    background-color: #07a1e3;
+} 
+.doneDoList button {
+    background-color: #0ee3bc;
+}
