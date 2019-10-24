@@ -37,8 +37,9 @@ ul {
     list-style-type: square;
 }
 
-li button {
-    background-color: red;
+span {
+    margin-right: 5px;
+
 }
 
 /* layout */
