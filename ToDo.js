@@ -106,6 +106,7 @@ function paintToDo(text) {
     const saveBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
+    const newIdDoneDo = doneDos.length + 1;
     const spanButton = document.createElement("span");
 
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
@@ -137,9 +138,10 @@ function paintToDo(text) {
         id: newId,
         checked: false,
     }
-
     toDos.push(toDoObj);
+    // doneDos.push(doneDoObj);
     saveToDos();
+    // saveDoneDos();
 }
 
 function handleSubmit(event) {
@@ -151,14 +153,18 @@ function handleSubmit(event) {
 
 function loadTodos() {
     const loadedToDos = localStorage.getItem(TODOS_LS);
-    const loadedDoneDos = localStorage.getItem(DONEDOS_LS);
-    // console.log(loadedDoneDos);
     if(loadedToDos !== null) {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
         });
-    } else if(loadedDoneDos !== null) {
+    }
+ }
+
+ function loadDoneDos() {
+    const loadedDoneDos = localStorage.getItem(DONEDOS_LS);
+    // console.log(loadedDoneDos);
+    if(loadedDoneDos !== null) {
         const parsedDoneDos = JSON.parse(loadedDoneDos);
         parsedDoneDos.forEach(function(doneDo) {
             paintToDo(doneDo.text);
@@ -168,6 +174,7 @@ function loadTodos() {
 
 function init() {
     loadTodos();
+    loadDoneDos();
     toDoForm.addEventListener("submit", handleSubmit)
 }
 
