@@ -11,7 +11,7 @@ body {
 input {
     border: none;
     border-bottom: 3px solid #a8ffef;
-    font-size: 0.9em;
+    font-size: 1em;
 }
  
 ul {
@@ -21,10 +21,11 @@ ul {
 li {
     display: flex;
     justify-content: space-between;
+    font-size: 0.88em;
 }
 
 h4 {
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 /* layout */
