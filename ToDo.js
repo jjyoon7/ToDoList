@@ -9,12 +9,15 @@ let toDos = [];
 let doneDos = [];
 
 const checkBtnStyle = "checked";
+const focusStyle = "focus";
 
 function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
+    
     btn.classList.add(checkBtnStyle);
+    ul.classList.remove(focusStyle);
 
     li.checked = true;
 
@@ -37,20 +40,24 @@ function editToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
-    const div = ul.parentNode;
-    //needs to be html object
-    div.focus();
     
+    ul.classList.add(focusStyle)
+
     console.log("its edited");
     console.log(ul.innerText);
 
     //li.text is changed as contentEditable
-    //focus on 
+
+    // when user click save, then the style is
 
 }
 
 function saveToDo(event) {
+    const btn = event.currentTarget;
+    const li = btn.parentNode;
+    const ul = li.parentNode;
 
+    ul.classList.remove(focusStyle);
 }
 
 function deleteToDo(event) {
@@ -59,6 +66,7 @@ function deleteToDo(event) {
     const ul = li.parentNode;
     const div = ul.parentNode;
 
+    ul.classList.remove(focusStyle);
     div.removeChild(ul);
     
     const cleanToDos = toDos.filter(function(toDo) {

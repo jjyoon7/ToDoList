@@ -66,6 +66,11 @@ h4 {
     background-color: #29ffd8;
 }
 
+.focus {
+    background-color: #ebfcff;
+    border-radius: 3px;
+}
+
 /* buttons */
 
 button {
