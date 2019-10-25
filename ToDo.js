@@ -20,10 +20,13 @@ function checkToDo(event) {
         btn.classList.add(checkBtnStyle);
         ul.classList.remove(focusStyle);
         
+        console.log(ul)
 
-        const checkToDos = toDos.filter(function(toDo) {
+        const moveToDo = toDos.filter(function(toDo) {
             if(toDo.id === parseInt(ul.id)){
+                // const checkBtn = ul
                 doneDoList.appendChild(ul); 
+                btn.remove();
                 return toDo.checked = true;
             }
         })
@@ -35,7 +38,7 @@ function checkToDo(event) {
         toDos = cleanToDos;
         //it looks weird but it is to avoid array inside of an array issue
         // this is causing null added to the object when doneDo is alreay in the doneDo list
-        doneDos.push(checkToDos[0]);
+        doneDos.push(moveToDo[0]);
         
         saveToDos();
         saveDoneDos();
@@ -63,7 +66,13 @@ function saveEditedToDo(event) {
             return toDo.text = ul.innerText;
         }
     })
+    const updateDoneDos = doneDos.filter(function(doneDo) {
+        if(doneDo.id === parseInt(ul.id)){
+            return doneDo.text = ul.innerText;
+        }
+    })
     saveToDos();
+    saveDoneDos();
 }
 
 function deleteToDo(event) {
