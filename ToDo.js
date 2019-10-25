@@ -11,48 +11,32 @@ let doneDos = [];
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
-//made it global so checkedToDo can have an access to text, but the received text from checkToDo is null
-let toDoObj = {
-    text: null,
-    id: null,
-    checked: false,
-}
-
 function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
+    const div = ul.parentNode;
     const newIdDone = doneDos.length + 1;
 
     btn.classList.add(checkBtnStyle);
     ul.classList.remove(focusStyle);
     
+    div.removeChild(ul);
+
     const checkToDos = toDos.filter(function(toDo) {
         if(toDo.id === parseInt(ul.id)){
             doneDoList.appendChild(ul); 
             return toDo.checked = true;
         }
     })
-
-    // delete checked toDo from the toDos array
-    //but now the toDos array is empty after this
-    const deleteCheckedDos = toDos.filter(function(toDo) {
-        if(toDo.checked === true){
-            //this should be something else
-            // return toDos.splice(toDo);
-            // return localStorage.removeItem(TODOS_LS, JSON.stringify(toDos))
-        }
+ 
+    const cleanToDos = toDos.filter(function(toDo) {
+        return toDo.id !== parseInt(ul.id);
     })
 
-    // console.log(deleteCheckedDos);
- 
-    // console.log(toDos)
-    //checkToDos here is an array with object inside
-    // console.log(checkToDos)
-
-    //so now we are pushing checkToDos array into doneDos array which means double array
-    // doneDos = checkToDos;
+    toDos = cleanToDos;
     doneDos.push(checkToDos);
+    
     saveToDos();
     saveDoneDos();
 
@@ -101,7 +85,7 @@ function deleteToDo(event) {
     toDos = cleanToDos;
     doneDos = cleanDoneDos;
     //array inside of an array
-    console.log(doneDos);
+    // console.log(doneDos);
     saveToDos();
     saveDoneDos();
 }
