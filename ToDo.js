@@ -12,32 +12,35 @@ const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
 function checkToDo(event) {
-    const btn = event.currentTarget;
-    const li = btn.parentNode;
-    const ul = li.parentNode;
-
-    btn.classList.add(checkBtnStyle);
-    ul.classList.remove(focusStyle);
+        //only triger this when the task is done
+        const btn = event.currentTarget;
+        const li = btn.parentNode;
+        const ul = li.parentNode;
     
-    const checkToDos = toDos.filter(function(toDo) {
-        if(toDo.id === parseInt(ul.id)){
-            doneDoList.appendChild(ul); 
-            return toDo.checked = true;
-        }
-    })
- 
-    const cleanToDos = toDos.filter(function(toDo) {
-        return toDo.id !== parseInt(ul.id);
-    })
-
-    toDos = cleanToDos;
-    //it looks weird but it is to avoid array inside of an array issue
-    // this is causing null added to the object when doneDo is alreay in the doneDo list
-    doneDos.push(checkToDos[0]);
+        btn.classList.add(checkBtnStyle);
+        ul.classList.remove(focusStyle);
+        
+        
+        const checkToDos = toDos.filter(function(toDo) {
+            if(toDo.id === parseInt(ul.id)){
+                doneDoList.appendChild(ul); 
+                return toDo.checked = true;
+            }
+        })
+     
+        const cleanToDos = toDos.filter(function(toDo) {
+            return toDo.id !== parseInt(ul.id);
+        })
     
-    saveToDos();
-    saveDoneDos();
-
+        toDos = cleanToDos;
+        //it looks weird but it is to avoid array inside of an array issue
+        // this is causing null added to the object when doneDo is alreay in the doneDo list
+        doneDos.push(checkToDos[0]);
+        
+        saveToDos();
+        saveDoneDos();
+        movedDo = true;
+    
 }
 
 function editToDo(event) {
@@ -133,6 +136,7 @@ function paintToDo(text) {
         text: text,
         id: newId,
         checked: false,
+        // moved: false,
     }
     toDos.push(toDoObj);
     saveToDos();

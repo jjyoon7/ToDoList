@@ -86,9 +86,6 @@ button {
     left: 2rem;
     cursor: pointer;
 }
-/* button :hover {
-    background-color: lightcoral;
-} */
 .toDoList button {
     background-color: #07a1e3;
 } 
