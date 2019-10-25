@@ -46,7 +46,7 @@ function checkToDo(event) {
 
     let doneDoObj = {
         id: newIdDone,
-        text: toDoObj.text,
+        text: //current li's text,
         checked: true,
     }
     doneDos.push(doneDoObj);
