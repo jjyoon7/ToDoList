@@ -39,6 +39,10 @@ function checkToDo(event) {
         }
     })
 
+    //checkToDos here is an array with object inside
+    console.log(checkToDos)
+
+    //so now we are pushing checkToDos array into doneDos array which means double array
     doneDos.push(checkToDos);
     // const checkDoneDos = toDos.filter(function(toDo) {
     //     if(toDo.checked === true){
