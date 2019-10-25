@@ -26,15 +26,10 @@ function checkToDo(event) {
 
     btn.classList.add(checkBtnStyle);
     ul.classList.remove(focusStyle);
-
-    li.checked = true;
-
-    if(li.checked){
-        doneDoList.appendChild(ul); 
-    } 
     
     const checkToDos = toDos.filter(function(toDo) {
         if(toDo.id === parseInt(ul.id)){
+            doneDoList.appendChild(ul); 
             return toDo.checked = true;
         }
     })
@@ -43,18 +38,19 @@ function checkToDo(event) {
     //but now the toDos array is empty after this
     const deleteCheckedDos = toDos.filter(function(toDo) {
         if(toDo.checked === true){
-            return toDos.splice(toDo);
+            //this should be something else
+            // return toDos.splice(toDo);
         }
     })
 
     // console.log(deleteCheckedDos);
-    toDos.push()
+ 
     // console.log(toDos)
     //checkToDos here is an array with object inside
     // console.log(checkToDos)
 
     //so now we are pushing checkToDos array into doneDos array which means double array
-    doneDos.push(checkToDos);
+    doneDos = checkToDos;
     
     saveToDos();
     saveDoneDos();
