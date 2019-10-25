@@ -40,6 +40,7 @@ function checkToDo(event) {
         if(toDo.checked === true){
             //this should be something else
             // return toDos.splice(toDo);
+            // return localStorage.removeItem(TODOS_LS, JSON.stringify(toDos))
         }
     })
 
@@ -50,8 +51,8 @@ function checkToDo(event) {
     // console.log(checkToDos)
 
     //so now we are pushing checkToDos array into doneDos array which means double array
-    doneDos = checkToDos;
-    
+    // doneDos = checkToDos;
+    doneDos.push(checkToDos);
     saveToDos();
     saveDoneDos();
 
