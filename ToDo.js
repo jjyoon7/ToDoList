@@ -33,6 +33,13 @@ function checkToDo(event) {
         doneDoList.appendChild(ul); 
     } 
     
+    const checkToDos = toDos.filter(function(toDo) {
+        if(toDo.id === parseInt(ul.id)){
+            return toDo.checked = true;
+        }
+    })
+    saveToDos();
+
     // //in the localStorage, the checked toDos are still paired with toDos key,
     // //but it should be deleted from the toDos key and move to doneDos.
 
