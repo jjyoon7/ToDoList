@@ -10,17 +10,7 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 
-function editToDos(event) {
-    // const btn = event.currentTarget;
-    // const li = btn.parentNode;
-    // const ul = li.parentNode;
-    // console.log("its edited");
-    // console.log(ul.innerText);
-
-    //li.text is changed as contentEditable
-}
-
-function checkToDos(event) {
+function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
@@ -43,20 +33,38 @@ function checkToDos(event) {
     // saveDoneDos();
 }
 
-function deleteToDos(event) {
+function editToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
     const div = ul.parentNode;
-    // console.log(li)
-    // console.log(ul)
+    //needs to be html object
+    div.focus();
+    
+    console.log("its edited");
+    console.log(ul.innerText);
+
+    //li.text is changed as contentEditable
+    //focus on 
+
+}
+
+function saveToDo(event) {
+
+}
+
+function deleteToDo(event) {
+    const btn = event.currentTarget;
+    const li = btn.parentNode;
+    const ul = li.parentNode;
+    const div = ul.parentNode;
 
     div.removeChild(ul);
     
     const cleanToDos = toDos.filter(function(toDo) {
         return toDo.id !== parseInt(ul.id);
     })
-    console.log(cleanToDos)
+
     toDos = cleanToDos;
     saveToDos();
 }
@@ -74,6 +82,7 @@ function paintToDo(text) {
     const delBtn = document.createElement("button");
     const checkBtn = document.createElement("button");
     const editBtn = document.createElement("button");
+    const saveBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     const spanButton = document.createElement("span");
@@ -81,12 +90,19 @@ function paintToDo(text) {
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
     checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
     editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
+    saveBtn.innerHTML = `<i class="fa fa-save"></i>`;
 
+    delBtn.addEventListener("click", deleteToDo)
+    checkBtn.addEventListener("click", checkToDo)
+    editBtn.addEventListener("click", editToDo)
+    saveBtn.addEventListener("click", saveToDo)
+    
     span.innerText = text;
     span.contentEditable = true;
 
     spanButton.appendChild(checkBtn);
     spanButton.appendChild(editBtn);
+    spanButton.appendChild(saveBtn);
     spanButton.appendChild(delBtn);
 
     li.appendChild(span);
@@ -94,17 +110,15 @@ function paintToDo(text) {
 
     li.id = newId;
     toDoList.appendChild(li);
+
     let toDoObj = {
         text: text,
         id: newId,
         checked: false,
     }
+
     toDos.push(toDoObj);
     saveToDos();
-
-    delBtn.addEventListener("click", deleteToDos)
-    checkBtn.addEventListener("click", checkToDos)
-    editBtn.addEventListener("click", editToDos)
 }
 
 function handleSubmit(event) {
