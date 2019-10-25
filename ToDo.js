@@ -11,11 +11,18 @@ let doneDos = [];
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
+let toDoObj = {
+    text: null,
+    id: null,
+    checked: false,
+}
+
 function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
-    
+    const newIdDone = doneDos.length + 1;
+
     btn.classList.add(checkBtnStyle);
     ul.classList.remove(focusStyle);
 
@@ -25,15 +32,22 @@ function checkToDo(event) {
         doneDoList.appendChild(ul); 
     } 
     
-    // const doneToDos = doneDos.filter(function(doneDo) {
-    //     return doneDo.checked = true;
-    // })
-    // let doneDoObj = {
-    //     id: newId,
-    //     checked: false,
-    // }
-    // doneDos.push(donDoObj);
-    // saveDoneDos();
+    //in the localStorage, the checked toDos are still paired with toDos key,
+    //but it should be deleted from the toDos key and move to doneDos.
+
+    const doneToDos = doneDos.filter(function(doneDo) {
+        return doneDo.checked = true;
+    })
+
+    console.log(toDoObj.text)
+
+    let doneDoObj = {
+        id: newIdDone,
+        text: toDoObj.text,
+        checked: true,
+    }
+    doneDos.push(doneDoObj);
+    saveDoneDos();
 }
 
 function editToDo(event) {
@@ -100,10 +114,10 @@ function paintToDo(text) {
     editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
     saveBtn.innerHTML = `<i class="fa fa-save"></i>`;
 
-    delBtn.addEventListener("click", deleteToDo)
-    checkBtn.addEventListener("click", checkToDo)
-    editBtn.addEventListener("click", editToDo)
-    saveBtn.addEventListener("click", saveToDo)
+    delBtn.addEventListener("click", deleteToDo);
+    checkBtn.addEventListener("click", checkToDo);
+    editBtn.addEventListener("click", editToDo);
+    saveBtn.addEventListener("click", saveToDo);
     
     span.innerText = text;
     span.contentEditable = true;
