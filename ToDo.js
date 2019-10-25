@@ -68,16 +68,11 @@ function saveToDo(event) {
 
     ul.classList.remove(focusStyle);
 
-    console.log(ul)
-
     const updateToDos = toDos.filter(function(toDo) {
         if(toDo.id === parseInt(ul.id)){
             return toDo.text = ul.innerText;
         }
     })
-    //need to update assigned toDo
-    console.log(toDos);
-    // toDos.push(updateToDos);
     saveToDos();
 }
 
