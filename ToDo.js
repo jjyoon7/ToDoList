@@ -33,24 +33,24 @@ function checkToDo(event) {
         doneDoList.appendChild(ul); 
     } 
     
-    //in the localStorage, the checked toDos are still paired with toDos key,
-    //but it should be deleted from the toDos key and move to doneDos.
+    // //in the localStorage, the checked toDos are still paired with toDos key,
+    // //but it should be deleted from the toDos key and move to doneDos.
 
-    const doneToDos = doneDos.filter(function(doneDo) {
-        return doneDo.checked = true;
-    })
+    // const doneToDos = doneDos.filter(function(doneDo) {
+    //     return doneDo.checked = true;
+    // })
 
-    localStorage.removeItem(TODOS_LS, //the checked li);
+    // localStorage.removeItem(TODOS_LS, //the checked li);
 
-    console.log(toDoObj.text)
+    // console.log(toDoObj.text)
 
-    let doneDoObj = {
-        id: newIdDone,
-        text: //current li's text,
-        checked: true,
-    }
-    doneDos.push(doneDoObj);
-    saveDoneDos();
+    // let doneDoObj = {
+    //     id: newIdDone,
+    //     text: //current li's text,
+    //     checked: true,
+    // }
+    // doneDos.push(doneDoObj);
+    // saveDoneDos();
 }
 
 function editToDo(event) {
@@ -68,14 +68,35 @@ function saveToDo(event) {
 
     ul.classList.remove(focusStyle);
 
-    console.log("its saved");
-    console.log(ul.innerText);
+    // console.log("its saved");
+    // console.log(ul.innerText);
+
+    // const userEditToDo = localStorage.userEdits = ul.innerText;
+    // toDos = userEditToDo;
+
+    // console.log(toDos[0]);
+
+    const updateTodo = toDos[0].text = ul.innerText;
+
+    // console.log(updateTodo);
+
+    // toDos.text.push(updateTodo);
+
+    toDoObj.text = updateTodo;
+
+    console.log(toDoObj);
+
+    toDos.push(toDoObj);
+    saveToDos();
+    console.log(toDos);
+
+    // localStorage.setItem(toDos, JSON.stringify(updateTodo))
 
     // get the saved item from localStorage and change its text value to ul.innerText
-    let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
-    console.log(beforeEditToDo);
+    // let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
+    // console.log(beforeEditToDo);
 
-    localStorage.setItem(TODOS_LS, //update the text value same as the ul.innerText)
+    // localStorage.setItem(TODOS_LS, //update the text value same as the ul.innerText)
 }
 
 function deleteToDo(event) {
