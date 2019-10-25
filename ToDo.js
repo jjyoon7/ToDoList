@@ -11,6 +11,8 @@ let doneDos = [];
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
+let loadToDo = false;
+
 function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
@@ -21,8 +23,6 @@ function checkToDo(event) {
     btn.classList.add(checkBtnStyle);
     ul.classList.remove(focusStyle);
     
-    div.removeChild(ul);
-
     const checkToDos = toDos.filter(function(toDo) {
         if(toDo.id === parseInt(ul.id)){
             doneDoList.appendChild(ul); 
@@ -130,19 +130,26 @@ function paintToDo(text) {
     li.appendChild(span);
     li.appendChild(spanButton);
 
-    li.id = newId;
-    toDoList.appendChild(li);
-
+    if(loadToDo) {
+        li.id = newId;
+        toDoList.appendChild(li);
+    }else {
+        li.id = newIdDoneDo;
+        doneDoList.appendChild(li);
+    }
     let toDoObj = {
         text: text,
         id: newId,
-        checked: false,
+        checked: loadToDo ? false : true,
     }
     toDos.push(toDoObj);
-    // doneDos.push(doneDoObj);
     saveToDos();
-    // saveDoneDos();
+
+    doneDos.push(toDoObj);
+    saveDoneDos();
 }
+
+
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -157,13 +164,13 @@ function loadTodos() {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
+            loadToDo = true;
         });
     }
  }
 
  function loadDoneDos() {
     const loadedDoneDos = localStorage.getItem(DONEDOS_LS);
-    // console.log(loadedDoneDos);
     if(loadedDoneDos !== null) {
         const parsedDoneDos = JSON.parse(loadedDoneDos);
         parsedDoneDos.forEach(function(doneDo) {
