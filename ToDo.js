@@ -58,7 +58,7 @@ function editToDo(event) {
     ul.classList.add(focusStyle);
 }
 
-function saveToDo(event) {
+function saveEditedToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
@@ -116,7 +116,7 @@ function paintToDo(text) {
     delBtn.addEventListener("click", deleteToDo);
     checkBtn.addEventListener("click", checkToDo);
     editBtn.addEventListener("click", editToDo);
-    saveBtn.addEventListener("click", saveToDo);
+    saveBtn.addEventListener("click", saveEditedToDo);
     
     span.innerText = text;
     span.contentEditable = true;
