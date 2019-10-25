@@ -103,6 +103,7 @@ function deleteToDo(event) {
 
     toDos = cleanToDos;
     doneDos = cleanDoneDos;
+    //array inside of an array
     console.log(doneDos);
     saveToDos();
     saveDoneDos();
@@ -169,13 +170,19 @@ function handleSubmit(event) {
 
 function loadTodos() {
     const loadedToDos = localStorage.getItem(TODOS_LS);
+    const loadedDoneDos = localStorage.getItem(DONEDOS_LS);
     if(loadedToDos !== null) {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
         });
+    } else if(loadedDoneDos !== null) {
+        const parsedDoneDos = JSON.parse(loadedDoneDos);
+        parsedDoneDos.forEach(function(doneDo) {
+            paintToDo(doneDo.text);
+        });
     }
-}
+ }
 
 function init() {
     loadTodos();
