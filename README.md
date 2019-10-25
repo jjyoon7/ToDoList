@@ -17,6 +17,6 @@ Here by I write them in detail.
 4. click event on button - Because there was an icon inside of a button, based on where you click, the event could not always find its target. The solution was simple, instead of event.target, used event.currentTarget                        
 
 //What can I improve in the future?
-1. The smallest window size layout could improve, now the task text and buttons go in 2 lines, where buttons are stacking.
+1. The smallest window size layout could improve, maybe better to scale down the button size?.
 2. When the user edit the text, it could be edited to the point where it breaks the layout, which creates a messy layout. It would be great to come up with the solution where you limit, maybe use slice function.
 3. Refactor the function, especially checkToDo, paintToDo, paintDoneDo functions could be simplified.
