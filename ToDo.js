@@ -11,6 +11,7 @@ let doneDos = [];
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
+//made it global so checkedToDo can have an access to text, but the received text from checkToDo is null
 let toDoObj = {
     text: null,
     id: null,
