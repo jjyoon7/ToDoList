@@ -73,8 +73,9 @@ function saveToDo(event) {
 
     // get the saved item from localStorage and change its text value to ul.innerText
     let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
-
     console.log(beforeEditToDo);
+
+    localStorage.setItem(TODOS_LS, //update the text value same as the ul.innerText)
 }
 
 function deleteToDo(event) {
