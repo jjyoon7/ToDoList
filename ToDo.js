@@ -11,14 +11,10 @@ let doneDos = [];
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
 
-let loadToDo = false;
-
 function checkToDo(event) {
     const btn = event.currentTarget;
     const li = btn.parentNode;
     const ul = li.parentNode;
-    const div = ul.parentNode;
-    const newIdDone = doneDos.length + 1;
 
     btn.classList.add(checkBtnStyle);
     ul.classList.remove(focusStyle);
@@ -36,6 +32,7 @@ function checkToDo(event) {
 
     toDos = cleanToDos;
     //it looks weird but it is to avoid array inside of an array issue
+    // this is causing null added to the object when doneDo is alreay in the doneDo list
     doneDos.push(checkToDos[0]);
     
     saveToDos();
@@ -90,6 +87,24 @@ function deleteToDo(event) {
     saveDoneDos();
 }
 
+function deleteDoneDo(event) {
+    const btn = event.currentTarget;
+    const li = btn.parentNode;
+    const ul = li.parentNode;
+    const div = ul.parentNode;
+
+    ul.classList.remove(focusStyle);
+    div.removeChild(ul);
+
+    const cleanDoneDos = doneDos.filter(function(doneDo) {
+        return doneDo.id !== parseInt(ul.id);
+    })
+
+    doneDos = cleanDoneDos;
+
+    saveDoneDos();
+}
+
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
@@ -106,7 +121,6 @@ function paintToDo(text) {
     const saveBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
-    const newIdDoneDo = doneDos.length + 1;
     const spanButton = document.createElement("span");
 
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
@@ -130,21 +144,57 @@ function paintToDo(text) {
     li.appendChild(span);
     li.appendChild(spanButton);
 
-    if(loadToDo) {
-        li.id = newId;
-        toDoList.appendChild(li);
-    }else {
-        li.id = newIdDoneDo;
-        doneDoList.appendChild(li);
-    }
+    li.id = newId;
+    toDoList.appendChild(li);
+
     let toDoObj = {
         text: text,
         id: newId,
-        checked: loadToDo ? false : true,
+        checked: false,
     }
     toDos.push(toDoObj);
     saveToDos();
+}
 
+function paintDoneDo(text) {
+    const li = document.createElement("li");
+    const delBtn = document.createElement("button");
+    const checkBtn = document.createElement("button");
+    const editBtn = document.createElement("button");
+    const saveBtn = document.createElement("button");
+    const span = document.createElement("span");
+    const newIdDoneDo = doneDos.length + 1;
+    const spanButton = document.createElement("span");
+
+    delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
+    checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
+    editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
+    saveBtn.innerHTML = `<i class="fa fa-save"></i>`;
+
+    delBtn.addEventListener("click", deleteDoneDo);
+    checkBtn.addEventListener("click", checkToDo);
+    editBtn.addEventListener("click", editToDo);
+    saveBtn.addEventListener("click", saveEditedToDo);
+    
+    span.innerText = text;
+    span.contentEditable = true;
+
+    spanButton.appendChild(checkBtn);
+    spanButton.appendChild(editBtn);
+    spanButton.appendChild(saveBtn);
+    spanButton.appendChild(delBtn);
+
+    li.appendChild(span);
+    li.appendChild(spanButton);
+
+    li.id = newIdDoneDo;
+    doneDoList.appendChild(li);
+
+    let toDoObj = {
+        text: text,
+        id: newIdDoneDo,
+        checked: true,
+    }
     doneDos.push(toDoObj);
     saveDoneDos();
 }
@@ -164,7 +214,7 @@ function loadTodos() {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
-            loadToDo = true;
+            // loadToDo = true;
         });
     }
  }
@@ -174,7 +224,7 @@ function loadTodos() {
     if(loadedDoneDos !== null) {
         const parsedDoneDos = JSON.parse(loadedDoneDos);
         parsedDoneDos.forEach(function(doneDo) {
-            paintToDo(doneDo.text);
+            paintDoneDo(doneDo.text);
         });
     }
  }
