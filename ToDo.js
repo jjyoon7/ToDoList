@@ -75,7 +75,9 @@ function saveToDo(event) {
             return toDo.text = ul.innerText;
         }
     })
-    toDos.push(updateToDos);
+    //need to update assigned toDo
+    console.log(toDos);
+    // toDos.push(updateToDos);
     saveToDos();
 }
 
