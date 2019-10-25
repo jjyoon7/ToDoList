@@ -40,6 +40,8 @@ function checkToDo(event) {
         return doneDo.checked = true;
     })
 
+    localStorage.removeItem(TODOS_LS, //the checked li);
+
     console.log(toDoObj.text)
 
     let doneDoObj = {
