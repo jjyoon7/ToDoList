@@ -10,8 +10,8 @@ Here by I write them in detail.
 2. doneDos array - The problem was simple, that if you save the filtered toDos inside of the doneDos, 
    then it is array inside of an array. The solution was to choose specific object from the filtered toDos array => doneDos.push(moveToDo[0]);
 3. checkToDo function - updating the localStorage based on the updated object was challenging. Solved with filter function 
-                        a. Storing doneDo to doneDos array
-                        b. Delete the checked: true obejct from the toDos key 
+    a. Storing doneDo to doneDos array
+    b. Delete the checked: true obejct from the toDos key 
                         
 4. click event on button - Because it was icon inside of button, based on where you click,
    the event could not always find its target. The solution was simple, instead of event.target, it is event.currentTarget                        
