@@ -10,7 +10,7 @@ let doneDos = [];
 
 const checkBtnStyle = "checked";
 const focusStyle = "focus";
-
+const spanTextStyle = "span-text"
 function checkToDo(event) {
         //only triger this when the task is done
         const btn = event.currentTarget;
@@ -129,6 +129,7 @@ function paintToDo(text) {
     
     span.innerText = text;
     span.contentEditable = true;
+    span.classList.add(spanTextStyle);
 
     spanButton.appendChild(checkBtn);
     spanButton.appendChild(editBtn);
