@@ -39,16 +39,19 @@ function checkToDo(event) {
         }
     })
 
+    const leftToDos = toDos.filter(function(toDo) {
+        if(toDo.checked === true){
+            return toDos.splice(toDo);
+        }
+    })
+
     //checkToDos here is an array with object inside
-    console.log(checkToDos)
+    // console.log(checkToDos)
 
     //so now we are pushing checkToDos array into doneDos array which means double array
     doneDos.push(checkToDos);
-    // const checkDoneDos = toDos.filter(function(toDo) {
-    //     if(toDo.checked === true){
-    //         return doneDoList.appendChild(toDo); 
-    //     }
-    // })
+    
+    // need to delete the toDo.checked = true toDo from the toDos array
     saveToDos();
     saveDoneDos();
 
