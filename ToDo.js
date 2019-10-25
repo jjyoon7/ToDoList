@@ -82,26 +82,8 @@ function deleteToDo(event) {
 
     toDos = cleanToDos;
     doneDos = cleanDoneDos;
-
+    
     saveToDos();
-    saveDoneDos();
-}
-
-function deleteDoneDo(event) {
-    const btn = event.currentTarget;
-    const li = btn.parentNode;
-    const ul = li.parentNode;
-    const div = ul.parentNode;
-
-    ul.classList.remove(focusStyle);
-    div.removeChild(ul);
-
-    const cleanDoneDos = doneDos.filter(function(doneDo) {
-        return doneDo.id !== parseInt(ul.id);
-    })
-
-    doneDos = cleanDoneDos;
-
     saveDoneDos();
 }
 
@@ -171,7 +153,7 @@ function paintDoneDo(text) {
     editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
     saveBtn.innerHTML = `<i class="fa fa-save"></i>`;
 
-    delBtn.addEventListener("click", deleteDoneDo);
+    delBtn.addEventListener("click", deleteToDo);
     checkBtn.addEventListener("click", checkToDo);
     editBtn.addEventListener("click", editToDo);
     saveBtn.addEventListener("click", saveEditedToDo);
