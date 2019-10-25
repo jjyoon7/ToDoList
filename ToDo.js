@@ -70,19 +70,13 @@ function saveToDo(event) {
 
     console.log(ul)
 
-    // has to be current one, maybe use id?
-    const updateTodo = toDos[0].text = ul.innerText;
-
-    toDoObj.text = updateTodo;
-
-    toDos.push(toDoObj);
+    const updateToDos = toDos.filter(function(toDo) {
+        if(toDo.id === parseInt(ul.id)){
+            return toDo.text = ul.innerText;
+        }
+    })
+    toDos.push(updateToDos);
     saveToDos();
-
-    // get the saved item from localStorage and change its text value to ul.innerText
-    // let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
-    // console.log(beforeEditToDo);
-
-    // localStorage.setItem(TODOS_LS, //update the text value same as the ul.innerText)
 }
 
 function deleteToDo(event) {
