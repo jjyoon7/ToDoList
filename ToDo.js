@@ -41,15 +41,7 @@ function editToDo(event) {
     const li = btn.parentNode;
     const ul = li.parentNode;
     
-    ul.classList.add(focusStyle)
-
-    console.log("its edited");
-    console.log(ul.innerText);
-
-    //li.text is changed as contentEditable
-
-    // when user click save, then the style is
-
+    ul.classList.add(focusStyle);
 }
 
 function saveToDo(event) {
@@ -58,6 +50,14 @@ function saveToDo(event) {
     const ul = li.parentNode;
 
     ul.classList.remove(focusStyle);
+
+    console.log("its saved");
+    console.log(ul.innerText);
+
+    // get the saved item from localStorage and change its text value to ul.innerText
+    let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
+
+    console.log(beforeEditToDo);
 }
 
 function deleteToDo(event) {
