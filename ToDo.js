@@ -35,7 +35,8 @@ function checkToDo(event) {
     })
 
     toDos = cleanToDos;
-    doneDos.push(checkToDos);
+    //it looks weird but it is to avoid array inside of an array issue
+    doneDos.push(checkToDos[0]);
     
     saveToDos();
     saveDoneDos();
@@ -84,8 +85,7 @@ function deleteToDo(event) {
 
     toDos = cleanToDos;
     doneDos = cleanDoneDos;
-    //array inside of an array
-    // console.log(doneDos);
+
     saveToDos();
     saveDoneDos();
 }
@@ -152,6 +152,7 @@ function handleSubmit(event) {
 function loadTodos() {
     const loadedToDos = localStorage.getItem(TODOS_LS);
     const loadedDoneDos = localStorage.getItem(DONEDOS_LS);
+    // console.log(loadedDoneDos);
     if(loadedToDos !== null) {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
