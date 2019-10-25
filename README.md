@@ -11,7 +11,7 @@ Here by I write them in detail.
 3. checkToDo function - updating the localStorage based on the updated object state was challenging. Solved with filter function.
 
     1) Storing doneDo to doneDos array.
-    2) Delete the checked toDo: true obejct from the toDos key. 
+    2) Delete the obejct from the toDos key when it has been checked and move to doneDoList. 
 
 
 4. click event on button - Because there was an icon inside of a button, based on where you click, the event could not always find its target. The solution was simple, instead of event.target, used event.currentTarget                        
