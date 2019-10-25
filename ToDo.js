@@ -38,26 +38,16 @@ function checkToDo(event) {
             return toDo.checked = true;
         }
     })
-    saveToDos();
 
-    // //in the localStorage, the checked toDos are still paired with toDos key,
-    // //but it should be deleted from the toDos key and move to doneDos.
-
-    // const doneToDos = doneDos.filter(function(doneDo) {
-    //     return doneDo.checked = true;
+    doneDos.push(checkToDos);
+    // const checkDoneDos = toDos.filter(function(toDo) {
+    //     if(toDo.checked === true){
+    //         return doneDoList.appendChild(toDo); 
+    //     }
     // })
+    saveToDos();
+    saveDoneDos();
 
-    // localStorage.removeItem(TODOS_LS, //the checked li);
-
-    // console.log(toDoObj.text)
-
-    // let doneDoObj = {
-    //     id: newIdDone,
-    //     text: //current li's text,
-    //     checked: true,
-    // }
-    // doneDos.push(doneDoObj);
-    // saveDoneDos();
 }
 
 function editToDo(event) {
