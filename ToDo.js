@@ -68,29 +68,15 @@ function saveToDo(event) {
 
     ul.classList.remove(focusStyle);
 
-    // console.log("its saved");
-    // console.log(ul.innerText);
+    console.log(ul)
 
-    // const userEditToDo = localStorage.userEdits = ul.innerText;
-    // toDos = userEditToDo;
-
-    // console.log(toDos[0]);
-
+    // has to be current one, maybe use id?
     const updateTodo = toDos[0].text = ul.innerText;
-
-    // console.log(updateTodo);
-
-    // toDos.text.push(updateTodo);
 
     toDoObj.text = updateTodo;
 
-    console.log(toDoObj);
-
     toDos.push(toDoObj);
     saveToDos();
-    console.log(toDos);
-
-    // localStorage.setItem(toDos, JSON.stringify(updateTodo))
 
     // get the saved item from localStorage and change its text value to ul.innerText
     // let beforeEditToDo = localStorage.getItem(TODOS_LS, toDos);
