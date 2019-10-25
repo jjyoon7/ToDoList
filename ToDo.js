@@ -20,7 +20,7 @@ function checkToDo(event) {
         btn.classList.add(checkBtnStyle);
         ul.classList.remove(focusStyle);
         
-        
+
         const checkToDos = toDos.filter(function(toDo) {
             if(toDo.id === parseInt(ul.id)){
                 doneDoList.appendChild(ul); 
@@ -145,7 +145,6 @@ function paintToDo(text) {
 function paintDoneDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
-    const checkBtn = document.createElement("button");
     const editBtn = document.createElement("button");
     const saveBtn = document.createElement("button");
     const span = document.createElement("span");
@@ -153,19 +152,16 @@ function paintDoneDo(text) {
     const spanButton = document.createElement("span");
 
     delBtn.innerHTML = `<i class="fa fa-trash"></i>`;
-    checkBtn.innerHTML = `<i class="fa fa-check"></i>`;
     editBtn.innerHTML = `<i class="fa fa-edit"></i>`;
     saveBtn.innerHTML = `<i class="fa fa-save"></i>`;
 
     delBtn.addEventListener("click", deleteToDo);
-    checkBtn.addEventListener("click", checkToDo);
     editBtn.addEventListener("click", editToDo);
     saveBtn.addEventListener("click", saveEditedToDo);
     
     span.innerText = text;
     span.contentEditable = true;
 
-    spanButton.appendChild(checkBtn);
     spanButton.appendChild(editBtn);
     spanButton.appendChild(saveBtn);
     spanButton.appendChild(delBtn);
