@@ -40,12 +40,16 @@ function checkToDo(event) {
     })
 
     // delete checked toDo from the toDos array
+    //but now the toDos array is empty after this
     const deleteCheckedDos = toDos.filter(function(toDo) {
         if(toDo.checked === true){
             return toDos.splice(toDo);
         }
     })
 
+    // console.log(deleteCheckedDos);
+    toDos.push()
+    // console.log(toDos)
     //checkToDos here is an array with object inside
     // console.log(checkToDos)
 
@@ -93,8 +97,15 @@ function deleteToDo(event) {
         return toDo.id !== parseInt(ul.id);
     })
 
+    const cleanDoneDos = doneDos.filter(function(doneDo) {
+        return doneDo.id !== parseInt(ul.id);
+    })
+
     toDos = cleanToDos;
+    doneDos = cleanDoneDos;
+    console.log(doneDos);
     saveToDos();
+    saveDoneDos();
 }
 
 function saveToDos() {
