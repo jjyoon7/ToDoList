@@ -2,6 +2,7 @@ const toDoForm = document.querySelector(".js-toDoForm");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector(".js-toDoList")
 const doneDoList = document.querySelector(".js-doneDoList")
+// let spanTextElm;
 
 const TODOS_LS = "toDos"
 const DONEDOS_LS = "doneDos"
@@ -107,6 +108,11 @@ function saveDoneDos() {
     localStorage.setItem(DONEDOS_LS, JSON.stringify(doneDos));
 }
 
+// function handleWords() {
+//     console.log("handle words");
+//     return (this.innerHTML.length < 19);
+// }
+
 function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
@@ -130,6 +136,12 @@ function paintToDo(text) {
     span.innerText = text;
     span.contentEditable = true;
     span.classList.add(spanTextStyle);
+    // span.addEventListener("keypress", handleWords);
+
+
+    // let spanTextElm = document.querySelector(".span-text");
+    // spanTextElm.addEventListener("keypress", handleWords);
+
 
     spanButton.appendChild(checkBtn);
     spanButton.appendChild(editBtn);
@@ -146,7 +158,6 @@ function paintToDo(text) {
         text: text,
         id: newId,
         checked: false,
-        // moved: false,
     }
     toDos.push(toDoObj);
     saveToDos();
@@ -206,7 +217,6 @@ function loadTodos() {
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);
-            // loadToDo = true;
         });
     }
  }
