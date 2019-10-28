@@ -14,9 +14,9 @@ Here by I write them in detail.
     2) Delete the obejct from the toDos key when it has been checked and move to doneDos key. 
 
 
-4. click event on button - Because there was an icon inside of a button, based on where you click, the event could not always find its target. The solution was simple, instead of event.target, used event.currentTarget                        
+4. click event on button - Because there was an icon inside of a button, based on where you click, the event could not always find its target. The solution was simple, instead of event.target, used event.currentTarget  
+5. Layout for smaller window size, each button would stack under the task based on how smaller the window size gets - solved by using media query and flex-direction to wrap the whole buttons span down when the width of the card is too small.
 
 //What can I improve in the future?
-1. The smallest window size layout could improve, maybe better to scale down the button size?.
-2. When the user edit the text, it could be edited to the point where it breaks the layout, which creates a messy layout. It would be great to come up with the solution where you limit, maybe use slice function.
-3. Refactor the function, especially checkToDo, paintToDo, paintDoneDo functions could be simplified.
+1. When the user edit the text, it could be edited to the point where it breaks the layout, which creates a messy layout. It would be great to come up with the solution where you limit, maybe use slice function.
+2. Refactor the function, especially checkToDo, paintToDo, paintDoneDo functions could be simplified.
