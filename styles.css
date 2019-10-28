@@ -24,6 +24,8 @@ li {
     font-size: 0.88em;
 }
 
+
+
 h4 {
     font-size: 1em;
 }
@@ -31,6 +33,7 @@ h4 {
 @media (max-width: 650px) {
     li {
         font-size: 0.7em;
+        flex-direction: column;
     }
     input {
         font-size: 0.7em;
