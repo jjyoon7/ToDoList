@@ -19,4 +19,5 @@ Here by I write them in detail.
 6. When the user edit the text, it could be edited to the point where it breaks the layout, which creates a messy layout. It would be great to come up with the solution where you limit, maybe use slice function. - solved by giving specific width to span-text class
 
 //What can I improve in the future?
+
 Refactor the function, especially checkToDo, paintToDo, paintDoneDo functions could be simplified.
